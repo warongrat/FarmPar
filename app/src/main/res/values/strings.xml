@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">FarmPar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_chat">Chat</string>
+    <string name="action_exit">Exit</string>
+
+    <string name="Weather">Weather</string>
+    <string name="Irrigation">Irrigation Control</string>
+    <string name="AutoIrrigation">Auto Irrigation</string>
+    <string name="SetTime">Set Time Irrigation</string>
+    <string name="Settings">Settings</string>
+
+
+    <string name="error_google_sign_in">Can\'t sign in using Google</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="empty_view_home">Oh oh! Looks like you\'re all alone</string>
+    <string name="hint_message">Type your message..</string>
+    <string name="error_loading_user">Couldn\'t load user</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="empty_view_thread">Send the first message!</string>
+    <string name="message_message_copied">Copied to clipboard</string>
+    <string name="clipboard_title_copied_message">Copied message</string>
+    <string name="Enable">Enable</string>
+    <string name="Disable">Disable</string>
+    <string name="Status">Status</string>
+    <string name="Timer">Set Timer</string>
+    <string name="Temp">Temperature</string>
+    <string name="Hump">Humidity</string>
+    <string name="Heat">Heat Index</string>
+    <string name="Cloudy">Cloudy</string>
+    <string name="Sunny">Sunny</string>
+    <string name="Rainy">Rainy</string>
+    <string name="Sun_Rain">Sun Rain</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Reset">Reset</string>
+    <string name="Change_ID">Change ID</string>
+    <string name="Current_ID">Current ID</string>
+    <string name="Set1">Set time 1</string>
+    <string name="Set2">Set time 2</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="about">About</string>
+    <string name="login_success">login success</string>
+    <string name="login">LOGIN</string>
+    <string name="Username">Email</string>
+    <string name="Password">Password</string>
+    <string name="forgot_your_password">Forgot your password ?</string>
+    <string name="go">GO</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="next">NEXT</string>
+    <string name="register">REGISTER</string>
+
+    <string name="hint_username">Enter a new username</string>
+    <string name="hint_email_reset">Enter your email</string>
+    <string name="enter_group_name">Enter group name</string>
+    <string name="Select">Select</string>
+    <string name="SignOut">Sign out</string>
+
+</resources>

@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "546899999817",
+    "firebase_url": "https://farmpar-fea02.firebaseio.com",
+    "project_id": "farmpar-fea02",
+    "storage_bucket": "farmpar-fea02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546899999817:android:dc89ab41ca133c0e",
+        "android_client_info": {
+          "package_name": "project.farmpar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546899999817-iirrvhvf1qolfgi5m79jeak9hslc691c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "project.farmpar",
+            "certificate_hash": "2dcf4184784e9ddbc5a992a37fcb7cccdbdc82fd"
+          }
+        },
+        {
+          "client_id": "546899999817-ufku82lulcabeq99r9jgu9rumnuugl95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAc8Pf18KUA2Qgsax_erYS1uwkO9oRA-s"
+        },
+        {
+          "current_key": "AIzaSyDZZ2xCwR-nCTzQlFXGM9Ykh4lnMQQ6Zks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546899999817-ufku82lulcabeq99r9jgu9rumnuugl95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
