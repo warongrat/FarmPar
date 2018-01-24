@@ -10,7 +10,6 @@
     <string name="Weather">สภาพอากาศ</string>
     <string name="Irrigation">รดน้ำต้นไม้</string>
     <string name="AutoIrrigation">รดน้ำอัตโนมัติ</string>
-    <string name="Fertilization">ใส่ปุ๋ยต้นไม้</string>
     <string name="SetTime">ตั้งเวลาใส่ปุ๋ย</string>
     <string name="Settings">ตั้งค่า</string>
 
