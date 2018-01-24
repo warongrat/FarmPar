@@ -42,7 +42,7 @@ public class Setting extends Fragment {
     List<String> stringlist;
     ArrayAdapter<String> adapter;
     private String username;
-private String [] type = {"Choose a Type...", "FirstPlant", "FiSho"};
+    private String[] type = {"Choose a Type...", "FirstPlant", "FiSho"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +59,9 @@ private String [] type = {"Choose a Type...", "FirstPlant", "FiSho"};
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 username = dataSnapshot.getValue().toString();
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("Name", username);
+                editor.commit();
             }
 
             @Override
@@ -178,66 +181,70 @@ private String [] type = {"Choose a Type...", "FirstPlant", "FiSho"};
                 adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, type);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 t_spinner.setAdapter(adapter);
-                myRef = FirebaseDatabase.getInstance().getReference("users").child(username);
+                myRef = FirebaseDatabase.getInstance().getReference("users").child(prefs.getString("Name", ""));
 
-                AlertDialog.Builder builder =
+                final AlertDialog.Builder builder =
                         new AlertDialog.Builder(getActivity());
+                builder.setCancelable(false);
                 builder.setView(dView);
                 builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
 
                         // FirstPlant
                         if (!t_spinner.getSelectedItem().toString().equals("Choose a Type...")) {
-                            myRef.child(farmname.getText().toString()).setValue(controller.getText().toString());
-                            if (t_spinner.getSelectedItem().toString().equals("FirstPlant")) {
-                                Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FirstPlant");
-                                Ref.child("SetTime").child("Alert").setValue("Disable");
-                                Ref.child("SetTime").child("Alert2").setValue("Disable");
-                                Ref.child("SetTime").child("Notification").setValue("Disable");
-                                Ref.child("SetTime").child("Secret").setValue("0");
-                                Ref.child("SetTime").child("Status").setValue("Disable");
-                                Ref.child("AutoIrrigation").child("Notification").setValue("Disable");
-                                Ref.child("AutoIrrigation").child("Status").setValue("Disable");
-                                Ref.child("AutoIrrigation").child("Warning").setValue(0);
-                                Ref.child("Irrigation").child("Time").setValue(0);
-                                Ref.child("Irrigation").child("Status").setValue("Disable");
-                                Ref.child("Irrigation").child("Notification").setValue("Disable");
-                                Ref.child("Weather").child("Temperature").setValue(0);
-                                Ref.child("Weather").child("Humidity").setValue(0);
-                                Ref.child("Weather").child("Heatindex").setValue(0);
-                                Ref.child("Weather").child("Raindrop").setValue(0);
-                                Ref.child("Weather").child("Sunlight").setValue(0);
-                            }
+                            if (farmname.getText().toString().equals("") || (controller.getText().toString().equals(""))) {
+                            } else {
+                                myRef.child(farmname.getText().toString()).setValue(controller.getText().toString());
+                                if (t_spinner.getSelectedItem().toString().equals("FirstPlant")) {
+                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FirstPlant");
+                                    Ref.child("SetTime").child("Alert").setValue("Disable");
+                                    Ref.child("SetTime").child("Alert2").setValue("Disable");
+                                    Ref.child("SetTime").child("Notification").setValue("Disable");
+                                    Ref.child("SetTime").child("Secret").setValue("0");
+                                    Ref.child("SetTime").child("Status").setValue("Disable");
+                                    Ref.child("AutoIrrigation").child("Notification").setValue("Disable");
+                                    Ref.child("AutoIrrigation").child("Status").setValue("Disable");
+                                    Ref.child("AutoIrrigation").child("Warning").setValue(0);
+                                    Ref.child("Irrigation").child("Time").setValue(0);
+                                    Ref.child("Irrigation").child("Status").setValue("Disable");
+                                    Ref.child("Irrigation").child("Notification").setValue("Disable");
+                                    Ref.child("Weather").child("Temperature").setValue(0);
+                                    Ref.child("Weather").child("Humidity").setValue(0);
+                                    Ref.child("Weather").child("Heatindex").setValue(0);
+                                    Ref.child("Weather").child("Raindrop").setValue(0);
+                                    Ref.child("Weather").child("Sunlight").setValue(0);
+                                }
 
-                            //FiSho
-                            else if (t_spinner.getSelectedItem().toString().equals("FiSho")) {
-                                Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FiSho");
-                                Ref.child("FeedSet").child("Alert1").setValue("Disable");
-                                Ref.child("FeedSet").child("Alert2").setValue("Disable");
-                                Ref.child("FeedSet").child("Alert3").setValue("Disable");
-                                Ref.child("FeedSet").child("Minute").setValue(0);
-                                Ref.child("FeedSet").child("Notification").setValue("Disable");
-                                Ref.child("FeedSet").child("Secret").setValue(0);
-                                Ref.child("FeedSet").child("Status").setValue("Disable");
-                                Ref.child("FoodLevel").child("Level").setValue(0);
-                                Ref.child("FoodLevel").child("LevelSet").setValue(100);
-                                Ref.child("Setting").child("Status").setValue("Auto");
-                                Ref.child("Setting").child("TempH").setValue(40);
-                                Ref.child("Setting").child("TempL").setValue(20);
-                                Ref.child("Setting").child("TurH").setValue(100);
-                                Ref.child("Setting").child("TurL").setValue(20);
-                                Ref.child("Setting").child("pHH").setValue(13);
-                                Ref.child("Setting").child("pHL").setValue(4);
-                                Ref.child("Tank").child("Oxygen").setValue("Disable");
-                                Ref.child("Tank").child("Pump").setValue("Disable");
-                                Ref.child("Tank").child("PumpOut").setValue("Disable");
-                                Ref.child("Tank").child("WaterLevel").setValue("Normal");
-                                Ref.child("TankSet").child("TimeOxygen").setValue(0);
-                                Ref.child("WaterQuality").child("Temp").setValue(0);
-                                Ref.child("WaterQuality").child("Turbidity").setValue(0);
-                                Ref.child("WaterQuality").child("pH").setValue(0);
+                                //FiSho
+                                else if (t_spinner.getSelectedItem().toString().equals("FiSho")) {
+                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FiSho");
+                                    Ref.child("FeedSet").child("Alert1").setValue("Disable");
+                                    Ref.child("FeedSet").child("Alert2").setValue("Disable");
+                                    Ref.child("FeedSet").child("Alert3").setValue("Disable");
+                                    Ref.child("FeedSet").child("Minute").setValue(0);
+                                    Ref.child("FeedSet").child("Notification").setValue("Disable");
+                                    Ref.child("FeedSet").child("Secret").setValue(0);
+                                    Ref.child("FeedSet").child("Status").setValue("Disable");
+                                    Ref.child("FoodLevel").child("Level").setValue(0);
+                                    Ref.child("FoodLevel").child("LevelSet").setValue(100);
+                                    Ref.child("Setting").child("Status").setValue("Auto");
+                                    Ref.child("Setting").child("TempH").setValue(40);
+                                    Ref.child("Setting").child("TempL").setValue(20);
+                                    Ref.child("Setting").child("TurH").setValue(100);
+                                    Ref.child("Setting").child("TurL").setValue(20);
+                                    Ref.child("Setting").child("pHH").setValue(13);
+                                    Ref.child("Setting").child("pHL").setValue(4);
+                                    Ref.child("Tank").child("Oxygen").setValue("Disable");
+                                    Ref.child("Tank").child("Pump").setValue("Disable");
+                                    Ref.child("Tank").child("PumpOut").setValue("Disable");
+                                    Ref.child("Tank").child("WaterLevel").setValue("Normal");
+                                    Ref.child("TankSet").child("TimeOxygen").setValue(0);
+                                    Ref.child("WaterQuality").child("Temp").setValue(0);
+                                    Ref.child("WaterQuality").child("Turbidity").setValue(0);
+                                    Ref.child("WaterQuality").child("pH").setValue(0);
+                                }
+                                //FarmPar
                             }
-                            //FarmPar
                         }
                     }
                 });
