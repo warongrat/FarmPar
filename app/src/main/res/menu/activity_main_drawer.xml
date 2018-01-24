@@ -27,6 +27,40 @@
                 </group>
             </menu>
         </item>
+
+        <menu>
+            <item
+                android:id="@+id/nav_quality"
+                android:icon="@drawable/aquarium"
+                android:title="Water Quality" />
+            <item
+                android:id="@+id/nav_qualityset"
+                android:icon="@drawable/qset"
+                android:title="Quality Set" />
+            <item
+                android:id="@+id/nav_Intake"
+                android:icon="@drawable/food"
+                android:title="Food Level" />
+            <item
+                android:id="@+id/nav_feedtime"
+                android:icon="@drawable/foodfish"
+                android:title="Feed Time" />
+            <item
+                android:id="@+id/nav_tank"
+                android:icon="@drawable/pond_icon"
+                android:title="Pond" />
+            <item
+                android:id="@+id/nav_tankset"
+                android:icon="@drawable/pset"
+                android:title="Pond Set" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/settings"
+                android:title="Setting" />
+
+
+        </menu>
+
         <item
             android:id="@+id/setting"
             android:icon="@drawable/ic_settings_black_24dp"

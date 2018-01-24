@@ -1,4 +1,4 @@
-package project.farmpar;
+package project.farmpar.FirstPlant;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -27,8 +26,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import project.farmpar.Notification.Notification_AFertilization;
-import project.farmpar.Service.AlarmReceiver;
+import project.farmpar.Notifications.FirstPlant.Notification_AFertilization;
+import project.farmpar.R;
+import project.farmpar.Service.AlarmReceiverPlant;
 
 public class SetTimeFragment extends Fragment {
     private TimePicker timePicker;
@@ -53,7 +53,7 @@ public class SetTimeFragment extends Fragment {
         myRef = database.getReference(idc).child("SetTime");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
-        final Intent myIntent = new Intent(getActivity(), AlarmReceiver.class);
+        final Intent myIntent = new Intent(getActivity(), AlarmReceiverPlant.class);
         alarmManager = (AlarmManager) getActivity().getSystemService(getActivity().ALARM_SERVICE);
         final Calendar calendar = Calendar.getInstance();
         timePicker.setIs24HourView(true);

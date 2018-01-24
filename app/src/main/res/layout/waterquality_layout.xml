@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
+                android:fontFamily="cursive"
+                android:text="Water Status"
+                android:textAlignment="center"
+                android:textSize="36sp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/WtemptextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/TurbiditytextView"
+                android:layout_alignStart="@+id/TurbiditytextView"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="26dp"
+                android:fontFamily="sans-serif"
+                android:text="Temperature : Loading..."
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/pHtextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/WtemptextView"
+                android:layout_alignStart="@+id/WtemptextView"
+                android:layout_below="@+id/WtemptextView"
+                android:layout_marginTop="17dp"
+                android:fontFamily="sans-serif"
+                android:text="pH : Loading..."
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/TurbiditytextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pHtextView"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:text="Turbidity ( UTF ) : Loading..."
+                android:textSize="24sp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

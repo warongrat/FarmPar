@@ -37,19 +37,19 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="project.farmpar.Service.AlarmReceiver" />
+        <receiver android:name="project.farmpar.Service.AlarmReceiverPlant" />
 
         <service
-            android:name="project.farmpar.Notification.Notification_Fertilization"
+            android:name="project.farmpar.Notifications.FirstPlant.Notification_Fertilization"
             android:enabled="true" />
         <service
-            android:name="project.farmpar.Notification.Notification_Irrigation"
+            android:name="project.farmpar.Notifications.FirstPlant.Notification_Irrigation"
             android:enabled="true" />
         <service
-            android:name="project.farmpar.Notification.Notification_AIrrigation"
+            android:name="project.farmpar.Notifications.FirstPlant.Notification_AIrrigation"
             android:enabled="true" />
         <service
-            android:name="project.farmpar.Notification.Notification_AFertilization"
+            android:name="project.farmpar.Notifications.FirstPlant.Notification_AFertilization"
             android:enabled="true" />
 
         <activity

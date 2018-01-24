@@ -1,4 +1,4 @@
-package project.farmpar;
+package project.farmpar.FirstPlant;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
+
+import project.farmpar.R;
 
 
 public class weatherFragment extends Fragment {

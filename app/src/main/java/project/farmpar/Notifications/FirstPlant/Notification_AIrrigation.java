@@ -1,4 +1,4 @@
-package project.farmpar.Notification;
+package project.farmpar.Notifications.FirstPlant;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -26,7 +26,7 @@ import project.farmpar.R;
  * Created by waron on 12/9/2560.
  */
 
-public class Notification_Fertilization extends Service {
+public class Notification_AIrrigation extends Service {
     private DatabaseReference myRef;
     private int notification_id;
     private NotificationCompat.Builder builder;
@@ -43,11 +43,12 @@ public class Notification_Fertilization extends Service {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("Fertilization");
+        myRef = database.getReference(idc).child("AutoIrrigation");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        builder = new NotificationCompat.Builder(this);
 
         notification_id = (int) System.currentTimeMillis();
 
@@ -55,7 +56,7 @@ public class Notification_Fertilization extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notification_intent, 0);
         builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.icon_small)
-                .setContentTitle("Fertilization")
+                .setContentTitle("Auto Irrigation")
                 .setContentText("System : Disable")
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)

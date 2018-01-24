@@ -1,4 +1,4 @@
-package project.farmpar;
+package project.farmpar.FirstPlant;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -20,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import project.farmpar.R;
 
 
 public class WautoFragment extends Fragment {

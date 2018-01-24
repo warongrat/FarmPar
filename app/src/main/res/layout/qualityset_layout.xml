@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/SetBQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ASetBQ"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Manual Setting" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="cursive"
+        android:text="Quality Setting"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Temp (°C) :"
+        android:textSize="20sp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/TempMax"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="MAX"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_toRightOf="@+id/textView14"
+        android:layout_toEndOf="@+id/textView14"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <EditText
+        android:id="@+id/TempMin"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TempMax"
+        android:layout_alignBottom="@+id/TempMax"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/TempMax"
+        android:layout_toRightOf="@+id/TempMax"
+        android:ems="10"
+        android:hint="MIN"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pH :"
+        android:textSize="20sp"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/TempMax"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+
+
+    <EditText
+        android:id="@+id/pHMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/TempMax"
+        android:layout_alignLeft="@+id/TempMax"
+        android:layout_alignRight="@+id/TempMax"
+        android:layout_alignStart="@+id/TempMax"
+        android:layout_alignTop="@+id/textView13"
+        android:ems="10"
+        android:hint="MAX"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/pHMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/TempMin"
+        android:layout_alignLeft="@+id/TempMin"
+        android:layout_alignRight="@+id/TempMin"
+        android:layout_alignStart="@+id/TempMin"
+        android:layout_alignTop="@+id/pHMax"
+        android:ems="10"
+        android:hint="MIN"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Turbidity (UTF) :"
+        android:textSize="20sp"
+        android:layout_below="@+id/pHMax"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <EditText
+        android:id="@+id/TurMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/pHMax"
+        android:layout_alignLeft="@+id/pHMax"
+        android:layout_alignRight="@+id/pHMax"
+        android:layout_alignStart="@+id/pHMax"
+        android:layout_alignTop="@+id/textView14"
+        android:ems="10"
+        android:hint="MAX"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/TurMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TurMax"
+        android:layout_alignBottom="@+id/TurMax"
+        android:layout_alignEnd="@+id/pHMin"
+        android:layout_alignLeft="@+id/pHMin"
+        android:layout_alignRight="@+id/pHMin"
+        android:layout_alignStart="@+id/pHMin"
+        android:ems="10"
+        android:hint="MIN"
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/TextQS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SetBQ"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:text="Mode : Loading..."
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/ASetBQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="37dp"
+        android:background="@color/colorRed"
+        android:text="Auto Setting" />
+
+</RelativeLayout>

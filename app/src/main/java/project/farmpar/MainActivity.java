@@ -20,6 +20,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import project.farmpar.FiSho.FeedTimeFragment;
+import project.farmpar.FiSho.FoodLevelFragment;
+import project.farmpar.FiSho.PondSettingFragment;
+import project.farmpar.FiSho.QualitySet;
+import project.farmpar.FiSho.TankFragment;
+import project.farmpar.FiSho.WaterQualityFragment;
+import project.farmpar.FirstPlant.IrrigationFragment;
+import project.farmpar.FirstPlant.SetTimeFragment;
+import project.farmpar.FirstPlant.WautoFragment;
+import project.farmpar.FirstPlant.weatherFragment;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private int notification_id;
     private NotificationCompat.Builder builder;
@@ -137,6 +148,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment = new SetTimeFragment();
         } else if (id == R.id.setting) {
             fragment = new Setting();
+        } else if (id == R.id.nav_quality) {
+            fragment = new WaterQualityFragment();
+        } else if (id == R.id.nav_qualityset) {
+            fragment = new QualitySet();
+        } else if (id == R.id.nav_Intake) {
+            fragment = new FoodLevelFragment();
+        } else if (id == R.id.nav_feedtime) {
+            fragment = new FeedTimeFragment();
+        } else if (id == R.id.nav_tank) {
+            fragment = new TankFragment();
+        } else if (id == R.id.nav_tankset) {
+            fragment = new PondSettingFragment();
         }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack(null);

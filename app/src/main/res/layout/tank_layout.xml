@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackgroundFloating">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pump_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="11dp"
+            android:fontFamily="cursive"
+            android:text="Pond"
+            android:textAlignment="center"
+            android:textSize="46sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PumpSIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Pumping Water : Loading..."
+            android:textSize="20sp"
+            android:layout_below="@+id/WLevel"
+            android:layout_alignLeft="@+id/WLevel"
+            android:layout_alignStart="@+id/WLevel" />
+
+        <TextView
+            android:id="@+id/WLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Water Level : Loading..."
+            android:textSize="20sp"
+            android:layout_below="@+id/imageView7"
+            android:layout_alignLeft="@+id/imageView7"
+            android:layout_alignStart="@+id/imageView7" />
+
+        <TextView
+            android:id="@+id/PumpSOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Pumping Out : Loading..."
+            android:textSize="20sp"
+            android:layout_below="@+id/PumpSIn"
+            android:layout_alignLeft="@+id/PumpSIn"
+            android:layout_alignStart="@+id/PumpSIn" />
+
+        <TextView
+            android:id="@+id/OxygenS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/PumpSOut"
+            android:layout_alignStart="@+id/PumpSOut"
+            android:layout_below="@+id/PumpSOut"
+            android:layout_marginTop="17dp"
+            android:fontFamily="sans-serif"
+            android:text="Oxygen : Loading..."
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pond"
+            android:layout_below="@+id/pump_layout"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</LinearLayout>
