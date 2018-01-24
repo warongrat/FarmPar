@@ -1,8 +1,10 @@
 package project.farmpar.FiSho;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -44,9 +46,11 @@ public class TankFragment extends Fragment {
         OS = (TextView) view.findViewById(R.id.OxygenS);
         PSO = (TextView) view.findViewById(R.id.PumpSOut);
         PSI = (TextView) view.findViewById(R.id.PumpSIn);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String idc = prefs.getString("IDC", "");
         // TempWater
-        gpond = database.getReference("Tank");
+        gpond = database.getReference(idc).child("Tank");
         gpond.keepSynced(true);
         gpond.orderByValue().limitToLast(1);
         gpond.addValueEventListener(new ValueEventListener() {
@@ -73,7 +77,7 @@ public class TankFragment extends Fragment {
             }
         });
 
-        gnoti = database.getReference("Tank");
+        gnoti = database.getReference(idc).child("Tank");
         gnoti.keepSynced(true);
         gnoti.orderByValue().limitToLast(1);
         gnoti.addValueEventListener(new ValueEventListener() {

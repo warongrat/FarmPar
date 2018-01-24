@@ -180,6 +180,8 @@ public class Setting extends Fragment {
                 builder.setView(dView);
                 builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+
+                        // FirstPlant
                         myRef.child(farmname.getText().toString()).setValue(controller.getText().toString());
                         Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString());
                         Ref.child("SetTime").child("Alert").setValue("Disable");
@@ -198,6 +200,35 @@ public class Setting extends Fragment {
                         Ref.child("Weather").child("Heatindex").setValue(0);
                         Ref.child("Weather").child("Raindrop").setValue(0);
                         Ref.child("Weather").child("Sunlight").setValue(0);
+
+                        //FiSho
+                        Ref.child("FeedSet").child("Alert1").setValue("Disable");
+                        Ref.child("FeedSet").child("Alert2").setValue("Disable");
+                        Ref.child("FeedSet").child("Alert3").setValue("Disable");
+                        Ref.child("FeedSet").child("Minute").setValue(0);
+                        Ref.child("FeedSet").child("Notification").setValue("Disable");
+                        Ref.child("FeedSet").child("Secret").setValue(0);
+                        Ref.child("FeedSet").child("Status").setValue("Disable");
+                        Ref.child("FoodLevel").child("Level").setValue(0);
+                        Ref.child("FoodLevel").child("LevelSet").setValue(100);
+                        Ref.child("Setting").child("Status").setValue("Auto");
+                        Ref.child("Setting").child("TempH").setValue(40);
+                        Ref.child("Setting").child("TempL").setValue(20);
+                        Ref.child("Setting").child("TurH").setValue(100);
+                        Ref.child("Setting").child("TurL").setValue(20);
+                        Ref.child("Setting").child("pHH").setValue(13);
+                        Ref.child("Setting").child("pHL").setValue(4);
+                        Ref.child("Tank").child("Oxygen").setValue("Disable");
+                        Ref.child("Tank").child("Pump").setValue("Disable");
+                        Ref.child("Tank").child("PumpOut").setValue("Disable");
+                        Ref.child("Tank").child("WaterLevel").setValue("Normal");
+                        Ref.child("TankSet").child("TimeOxygen").setValue(0);
+                        Ref.child("WaterQuality").child("Temp").setValue(0);
+                        Ref.child("WaterQuality").child("Turbidity").setValue(0);
+                        Ref.child("WaterQuality").child("pH").setValue(0);
+
+                        //FarmPar
+
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

@@ -48,10 +48,10 @@ public class WaterQualityFragment extends Fragment {
         pH = (TextView) view.findViewById(R.id.pHtextView);
         turbidity = (TextView) view.findViewById(R.id.TurbiditytextView);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String icd = prefs.getString("IDC", "");
+        String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         // TempWater
-        gvalue = database.getReference(icd).child("WaterQuality");
+        gvalue = database.getReference(idc).child("WaterQuality");
         gvalue.keepSynced(true);
         gvalue.orderByValue().limitToLast(1);
         gvalue.addValueEventListener(new ValueEventListener() {
@@ -85,7 +85,7 @@ public class WaterQualityFragment extends Fragment {
         });
 
         //
-        gnoti = database.getReference("Setting");
+        gnoti = database.getReference(idc).child("Setting");
         gnoti.keepSynced(true);
         gnoti.orderByValue().limitToLast(1);
         gnoti.addValueEventListener(new ValueEventListener() {

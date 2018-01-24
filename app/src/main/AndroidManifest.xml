@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -51,6 +52,35 @@
         <service
             android:name="project.farmpar.Notifications.FirstPlant.Notification_AFertilization"
             android:enabled="true" />
+
+
+
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARWaterTempHigh"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARWaterTempLow"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARpHHigh"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARpHLow"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARTurbidityHigh"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_ARTurbidityLow"
+            android:enabled="true" />
+        <service
+            android:name="project.farmpar.Notifications.FiSho.Notification_AFood"
+            android:enabled="true" />
+
+        <receiver android:name="project.farmpar.Service.AlarmReceiverFish" />
+
+
+
 
         <activity
             android:name="project.farmpar.ui.RegisterActivity"

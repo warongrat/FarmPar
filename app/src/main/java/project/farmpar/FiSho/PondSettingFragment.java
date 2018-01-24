@@ -49,9 +49,9 @@ public class PondSettingFragment extends Fragment {
         BO = (Button) view.findViewById(R.id.BSO);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String icd = prefs.getString("IDC", "");
+        String idc = prefs.getString("IDC", "");
 
-        foodset = database.getReference(icd).child("FoodLevel");
+        foodset = database.getReference(idc).child("FoodLevel");
         foodset.keepSynced(true);
         foodset.orderByValue().limitToLast(1);
 
@@ -79,7 +79,7 @@ public class PondSettingFragment extends Fragment {
             }
         });
 
-        oxygenset = database.getReference(icd).child("TankSet");
+        oxygenset = database.getReference(idc).child("TankSet");
         oxygenset.keepSynced(true);
         oxygenset.orderByValue().limitToLast(1);
         BO.setOnClickListener(new View.OnClickListener() {

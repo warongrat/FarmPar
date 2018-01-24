@@ -45,9 +45,9 @@ public class FoodLevelFragment extends Fragment {
 
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String icd = prefs.getString("IDC", "");
+        String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        gfood = database.getReference(icd).child("FoodLevel");
+        gfood = database.getReference(idc).child("FoodLevel");
         gfood.keepSynced(true);
         gfood.orderByValue().limitToLast(1);
         gfood.addValueEventListener(new ValueEventListener() {

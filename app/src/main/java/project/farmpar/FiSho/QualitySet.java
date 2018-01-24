@@ -45,9 +45,9 @@ public class QualitySet extends Fragment {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String icd = prefs.getString("IDC", "");
+        String idc = prefs.getString("IDC", "");
 
-        Qset = database.getReference(icd).child("Setting");
+        Qset = database.getReference(idc).child("Setting");
         Qset.keepSynced(true);
         Qset.orderByValue().limitToLast(1);
         tmax = (EditText) view.findViewById(R.id.TempMax);

@@ -62,9 +62,9 @@ public class FeedTimeFragment extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String icd = prefs.getString("IDC", "");
+        String idc = prefs.getString("IDC", "");
 
-        time = database.getReference(icd).child("FeedSet");
+        time = database.getReference(idc).child("FeedSet");
         time.keepSynced(true);
         time.orderByValue().limitToLast(1);
         final Intent myIntent = new Intent(getActivity(), AlarmReceiverFish.class);
