@@ -50,7 +50,7 @@ public class TankFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String idc = prefs.getString("IDC", "");
         // TempWater
-        gpond = database.getReference(idc).child("Tank");
+        gpond = database.getReference(idc).child("FiSho").child("Tank");
         gpond.keepSynced(true);
         gpond.orderByValue().limitToLast(1);
         gpond.addValueEventListener(new ValueEventListener() {
@@ -77,7 +77,7 @@ public class TankFragment extends Fragment {
             }
         });
 
-        gnoti = database.getReference(idc).child("Tank");
+        gnoti = database.getReference(idc).child("FiSho").child("Tank");
         gnoti.keepSynced(true);
         gnoti.orderByValue().limitToLast(1);
         gnoti.addValueEventListener(new ValueEventListener() {

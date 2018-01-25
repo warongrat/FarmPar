@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:title="Menu">
+        <item android:title="FirstPlant">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
@@ -15,9 +15,9 @@
                         android:icon="@drawable/water"
                         android:title="@string/Irrigation" />
                     <item
-                    android:id="@+id/nav_time"
-                    android:icon="@drawable/timer"
-                    android:title="@string/SetTime" />
+                        android:id="@+id/nav_time"
+                        android:icon="@drawable/timer"
+                        android:title="@string/SetTime" />
                     <item
                         android:id="@+id/nav_Wauto"
                         android:icon="@drawable/irrigation2"
@@ -27,35 +27,38 @@
                 </group>
             </menu>
         </item>
+        <item android:title="FiSho">
+            <menu>
 
-        <menu>
-            <item
-                android:id="@+id/nav_quality"
-                android:icon="@drawable/aquarium"
-                android:title="Water Quality" />
-            <item
-                android:id="@+id/nav_qualityset"
-                android:icon="@drawable/qset"
-                android:title="Quality Set" />
-            <item
-                android:id="@+id/nav_Intake"
-                android:icon="@drawable/food"
-                android:title="Food Level" />
-            <item
-                android:id="@+id/nav_feedtime"
-                android:icon="@drawable/foodfish"
-                android:title="Feed Time" />
-            <item
-                android:id="@+id/nav_tank"
-                android:icon="@drawable/pond_icon"
-                android:title="Pond" />
-            <item
-                android:id="@+id/nav_tankset"
-                android:icon="@drawable/pset"
-                android:title="Pond Set" />
+                <item
+                    android:id="@+id/nav_quality"
+                    android:icon="@drawable/aquarium"
+                    android:title="Water Quality" />
+                <item
+                    android:id="@+id/nav_qualityset"
+                    android:icon="@drawable/qset"
+                    android:title="Quality Set" />
+                <item
+                    android:id="@+id/nav_Intake"
+                    android:icon="@drawable/food"
+                    android:title="Food Level" />
+                <item
+                    android:id="@+id/nav_feedtime"
+                    android:icon="@drawable/foodfish"
+                    android:title="Feed Time" />
+                <item
+                    android:id="@+id/nav_tank"
+                    android:icon="@drawable/pond_icon"
+                    android:title="Pond" />
+                <item
+                    android:id="@+id/nav_tankset"
+                    android:icon="@drawable/pset"
+                    android:title="Pond Set" />
 
 
-        </menu>
+            </menu>
+        </item>
+        <item android:title="@string/Settings">
         <menu>
 
             <item
@@ -63,6 +66,7 @@
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/Settings" />
         </menu>
+        </item>
 
     </group>
 </menu>

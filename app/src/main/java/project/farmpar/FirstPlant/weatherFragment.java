@@ -39,7 +39,7 @@ public class weatherFragment extends Fragment {
         getActivity().setTitle(R.string.Weather);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("Weather");
+        myRef = database.getReference(idc).child("FirstPlant").child("Weather");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

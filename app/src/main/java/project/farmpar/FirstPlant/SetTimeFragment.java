@@ -34,7 +34,7 @@ public class SetTimeFragment extends Fragment {
     private TimePicker timePicker;
     private Button start, start2, stop;
     private DatabaseReference myRef;
-    private TextView tv;
+    private TextView tv, tv2;
     AlarmManager alarmManager;
     private PendingIntent pending_intent;
 
@@ -46,11 +46,12 @@ public class SetTimeFragment extends Fragment {
         start = (Button) view.findViewById(R.id.start);
         start2 = (Button) view.findViewById(R.id.alarm2);
         stop = (Button) view.findViewById(R.id.stop);
-        tv = (TextView) view.findViewById(R.id.TextViewSetTime);
+        tv = (TextView) view.findViewById(R.id.TextViewSetTime1);
+        tv2 = (TextView) view.findViewById(R.id.TextViewSetTime2);
         getActivity().setTitle("Set Time Irrigation");
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("SetTime");
+        myRef = database.getReference(idc).child("FirstPlant").child("SetTime");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
         final Intent myIntent = new Intent(getActivity(), AlarmReceiverPlant.class);
@@ -66,10 +67,14 @@ public class SetTimeFragment extends Fragment {
                 value = String.valueOf(map.get("Alert"));
                 value2 = String.valueOf(map.get("Alert2"));
                 value1 = String.valueOf(map.get("Notification"));
-                if ((value.equals("Enable")) || value2.equals("Enable"))
-                    tv.setText(getResources().getString(R.string.Status) + ":" + getResources().getString(R.string.Timer));
+                if (value.equals("Enable"))
+                    tv.setText("Timer 1" + " : " + "Enable");
+                if(value2.equals("Enable"))
+                    tv2.setText("Timer 2" + " : " + "Enable");
                 if (value.equals("Disable"))
-                    tv.setText(getResources().getString(R.string.Status) + " : " + getResources().getString(R.string.Disable));
+                    tv.setText("Timer 1" + " : " + "Disable");
+                if(value2.equals("Disable"))
+                    tv2.setText("Timer 2" + " : " + "Disable");
                 if (value.equals("Disable") && value1.equals("Enable")) {
                     alarmManager.cancel(pending_intent);
                     getActivity().stopService(new Intent(getActivity(), Notification_AFertilization.class));

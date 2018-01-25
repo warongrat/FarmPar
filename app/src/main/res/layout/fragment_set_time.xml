@@ -22,59 +22,60 @@
             android:numbersSelectorColor="@color/green" />
 
         <TextView
-            android:id="@+id/TextViewSetTime"
+            android:id="@+id/TextViewSetTime1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.37"
             android:text="Loading..."
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:layout_weight="0.37" />
+            android:textSize="24sp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout"
+        <TextView
+            android:id="@+id/TextViewSetTime2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/timePicker"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.37"
+            android:text="Loading..."
+            android:textAlignment="center"
+            android:textSize="24sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/start"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/green"
-                    android:text="@string/Set1"
-                    android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/green"
+                android:text="@string/Set1"
+                android:textColor="@android:color/white" />
 
-                <Button
-                    android:id="@+id/alarm2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_orange_light"
-                    android:text="@string/Set2"
-                    android:textColor="@color/colorWhite" />
+            <Button
+                android:id="@+id/alarm2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_light"
+                android:text="@string/Set2"
+                android:textColor="@color/colorWhite" />
 
-                <Button
-                    android:id="@+id/stop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_red_dark"
-                    android:text="@string/Cancel"
-                    android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_dark"
+                android:text="@string/Cancel"
+                android:textColor="@android:color/white" />
 
-            </LinearLayout>
-
-        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

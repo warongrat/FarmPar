@@ -8,7 +8,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -41,9 +43,10 @@ public class Notification_AFood extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("FeedSet");
+        myRef = database.getReference(idc).child("FiSho").child("FeedSet");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

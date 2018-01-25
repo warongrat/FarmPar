@@ -5,7 +5,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +21,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import project.farmpar.FiSho.FeedTimeFragment;
 import project.farmpar.FiSho.FoodLevelFragment;
@@ -30,12 +39,14 @@ import project.farmpar.FirstPlant.IrrigationFragment;
 import project.farmpar.FirstPlant.SetTimeFragment;
 import project.farmpar.FirstPlant.WautoFragment;
 import project.farmpar.FirstPlant.weatherFragment;
+import project.farmpar.data.StaticConfig;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private int notification_id;
     private NotificationCompat.Builder builder;
     private NotificationManager notificationManager;
-    private String idc;
+    private DatabaseReference userDB;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +81,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         notificationManager.notify(notification_id, builder.build());
         notificationManager.cancel(notification_id);
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        userDB = FirebaseDatabase.getInstance().getReference().child("user").child(StaticConfig.UID).child("name");
+        userDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                username = dataSnapshot.getValue().toString();
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("Name", username);
+                editor.commit();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override

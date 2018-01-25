@@ -20,7 +20,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Loading..."
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/colorBlack"
@@ -36,6 +36,7 @@
 
         <TextView
             android:id="@+id/result"
+            android:text="Loading..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"

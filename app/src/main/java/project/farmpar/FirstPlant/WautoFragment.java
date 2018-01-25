@@ -41,7 +41,7 @@ public class WautoFragment extends Fragment {
         getActivity().setTitle(R.string.AutoIrrigation);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("AutoIrrigation");
+        myRef = database.getReference(idc).child("FirstPlant").child("AutoIrrigation");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

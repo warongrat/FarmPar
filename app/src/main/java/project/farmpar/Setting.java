@@ -11,11 +11,13 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,8 +42,7 @@ public class Setting extends Fragment {
     private TextView Tset;
     public static String idc;
     List<String> stringlist;
-    ArrayAdapter<String> adapter;
-    private String username;
+    ArrayAdapter<String> adapter, adapter_type;
     private String[] type = {"Choose a Type...", "FirstPlant", "FiSho"};
 
     @Override
@@ -54,20 +55,6 @@ public class Setting extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
-        userDB = FirebaseDatabase.getInstance().getReference().child("user").child(StaticConfig.UID).child("name");
-        userDB.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                username = dataSnapshot.getValue().toString();
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("Name", username);
-                editor.commit();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
 
         select.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,34 +62,70 @@ public class Setting extends Fragment {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 View mView = getActivity().getLayoutInflater().inflate(R.layout.dialog_spinner, null);
                 mBuilder.setTitle("Farm name");
-                myRef = FirebaseDatabase.getInstance().getReference("users").child(username);
+
                 final Spinner spinner = (Spinner) mView.findViewById(R.id.spinner);
+                final Spinner spinner_type = (Spinner) mView.findViewById(R.id.spinner_type);
+
+                adapter_type = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, type);
+                adapter_type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner_type.setAdapter(adapter_type);
+
                 stringlist = new ArrayList<>();
                 adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, stringlist);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef = FirebaseDatabase.getInstance().getReference("users").child(prefs.getString("Name", ""));
+
+                spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        stringlist.clear();
-                        stringlist.add("Choose a Farm...");
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String key = snapshot.getKey().toString();
-                            stringlist.add(key);
-                            adapter.notifyDataSetChanged();
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (parent.getItemAtPosition(position).toString().equals("FirstPlant")) {
+                            myRef.child("FirstPlant").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    stringlist.clear();
+                                    stringlist.add("Choose a Farm...");
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        String key = snapshot.getKey().toString();
+                                        stringlist.add(key);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
+                        } else if (parent.getItemAtPosition(position).toString().equals("FiSho")) {
+                            myRef.child("FiSho").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    stringlist.clear();
+                                    stringlist.add("Choose a Farm...");
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        String key = snapshot.getKey().toString();
+                                        stringlist.add(key);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
                         }
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
 
                 mBuilder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(final DialogInterface dialog, int which) {
-                        String value;
-                        myRef = FirebaseDatabase.getInstance().getReference("users").child(username);
+
                         if (!spinner.getSelectedItem().toString().equals("Choose a Farm...")) {
                             myRef.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -182,7 +205,6 @@ public class Setting extends Fragment {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 t_spinner.setAdapter(adapter);
                 myRef = FirebaseDatabase.getInstance().getReference("users").child(prefs.getString("Name", ""));
-
                 final AlertDialog.Builder builder =
                         new AlertDialog.Builder(getActivity());
                 builder.setCancelable(false);
@@ -194,8 +216,9 @@ public class Setting extends Fragment {
                         if (!t_spinner.getSelectedItem().toString().equals("Choose a Type...")) {
                             if (farmname.getText().toString().equals("") || (controller.getText().toString().equals(""))) {
                             } else {
-                                myRef.child(farmname.getText().toString()).setValue(controller.getText().toString());
+
                                 if (t_spinner.getSelectedItem().toString().equals("FirstPlant")) {
+                                    myRef.child("FirstPlant").child(farmname.getText().toString()).setValue(controller.getText().toString());
                                     Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FirstPlant");
                                     Ref.child("SetTime").child("Alert").setValue("Disable");
                                     Ref.child("SetTime").child("Alert2").setValue("Disable");
@@ -217,6 +240,7 @@ public class Setting extends Fragment {
 
                                 //FiSho
                                 else if (t_spinner.getSelectedItem().toString().equals("FiSho")) {
+                                    myRef.child("FiSho").child(farmname.getText().toString()).setValue(controller.getText().toString());
                                     Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FiSho");
                                     Ref.child("FeedSet").child("Alert1").setValue("Disable");
                                     Ref.child("FeedSet").child("Alert2").setValue("Disable");
