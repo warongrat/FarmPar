@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item android:title="FirstPlant">
-            <menu>
-                <group android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/nav_weather"
-                        android:icon="@drawable/weather"
-                        android:title="@string/Weather" />
+    <group android:id="@+id/group_plant">
+    <item android:title="FirstPlant">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_weather"
+                    android:icon="@drawable/weather"
+                    android:title="@string/Weather" />
 
-                    <item
-                        android:id="@+id/nav_water"
-                        android:icon="@drawable/water"
-                        android:title="@string/Irrigation" />
-                    <item
-                        android:id="@+id/nav_time"
-                        android:icon="@drawable/timer"
-                        android:title="@string/SetTime" />
-                    <item
-                        android:id="@+id/nav_Wauto"
-                        android:icon="@drawable/irrigation2"
-                        android:title="@string/AutoIrrigation" />
-
-
-                </group>
-            </menu>
-        </item>
-        <item android:title="FiSho">
-            <menu>
-
+                <item
+                    android:id="@+id/nav_water"
+                    android:icon="@drawable/water"
+                    android:title="@string/Irrigation" />
+                <item
+                    android:id="@+id/nav_time"
+                    android:icon="@drawable/timer"
+                    android:title="@string/SetTime" />
+                <item
+                    android:id="@+id/nav_Wauto"
+                    android:icon="@drawable/irrigation2"
+                    android:title="@string/AutoIrrigation" />
+            </group>
+        </menu>
+    </item>
+    </group>
+    <group android:id="@+id/group_fish">
+    <item android:title="FiSho">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_quality"
                     android:icon="@drawable/aquarium"
@@ -55,10 +55,11 @@
                     android:icon="@drawable/pset"
                     android:title="Pond Set" />
 
-
-            </menu>
-        </item>
-        <item android:title="@string/Settings">
+            </group>
+        </menu>
+    </item>
+    </group>
+    <item android:title="@string/Settings">
         <menu>
 
             <item
@@ -66,7 +67,5 @@
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/Settings" />
         </menu>
-        </item>
-
-    </group>
+    </item>
 </menu>

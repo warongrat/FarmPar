@@ -21,7 +21,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        Menu nav_Menu = navigationView.getMenu();
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         builder = new NotificationCompat.Builder(this);
 
@@ -79,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
                 .setPriority(Notification.PRIORITY_MAX);
 
-        notificationManager.notify(notification_id, builder.build());
-        notificationManager.cancel(notification_id);
+        //notificationManager.notify(notification_id, builder.build());
+        //notificationManager.cancel(notification_id);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         userDB = FirebaseDatabase.getInstance().getReference().child("user").child(StaticConfig.UID).child("name");
@@ -97,6 +96,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        if(prefs.getString("Type", "").toString().equals("FirstPlant"))
+            nav_Menu.setGroupVisible(R.id.group_fish, false);
+        else if(prefs.getString("Type", "").toString().equals("FiSho"))
+            nav_Menu.setGroupVisible(R.id.group_plant, false);
+        else{
+            nav_Menu.setGroupVisible(R.id.group_fish, false);
+            nav_Menu.setGroupVisible(R.id.group_plant, false);
+        }
     }
 
     @Override

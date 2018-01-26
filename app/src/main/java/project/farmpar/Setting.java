@@ -1,14 +1,21 @@
 package project.farmpar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,7 +24,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,10 +38,9 @@ import java.util.List;
 import project.farmpar.Service.ServiceUtils;
 import project.farmpar.data.FriendDB;
 import project.farmpar.data.GroupDB;
-import project.farmpar.data.StaticConfig;
 
 public class Setting extends Fragment {
-
+    NavigationView navigationView;
     private DatabaseReference myRef, userDB, Ref;
     private Button select, signout;
     private EditText controller;
@@ -51,6 +56,7 @@ public class Setting extends Fragment {
         signout = (Button) view.findViewById(R.id.signout);
         select = (Button) view.findViewById(R.id.select);
         Tset = (TextView) view.findViewById(R.id.Tset);
+
         getActivity().setTitle(R.string.Settings);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -89,6 +95,9 @@ public class Setting extends Fragment {
                                         String key = snapshot.getKey().toString();
                                         stringlist.add(key);
                                         adapter.notifyDataSetChanged();
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putString("Type", "FirstPlant");
+                                        editor.commit();
                                     }
                                 }
 
@@ -106,6 +115,9 @@ public class Setting extends Fragment {
                                         String key = snapshot.getKey().toString();
                                         stringlist.add(key);
                                         adapter.notifyDataSetChanged();
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putString("Type", "FiSho");
+                                        editor.commit();
                                     }
                                 }
 
@@ -127,7 +139,7 @@ public class Setting extends Fragment {
                     public void onClick(final DialogInterface dialog, int which) {
 
                         if (!spinner.getSelectedItem().toString().equals("Choose a Farm...")) {
-                            myRef.addValueEventListener(new ValueEventListener() {
+                            myRef.child(prefs.getString("Type", "")).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     String value = dataSnapshot.child(spinner.getSelectedItem().toString()).getValue(String.class);
@@ -136,6 +148,8 @@ public class Setting extends Fragment {
                                     editor.commit();
                                     Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
                                     dialog.dismiss();
+                                    getActivity().finish();
+                                    startActivity(getActivity().getIntent());
                                 }
 
                                 @Override
@@ -267,7 +281,6 @@ public class Setting extends Fragment {
                                     Ref.child("WaterQuality").child("Turbidity").setValue(0);
                                     Ref.child("WaterQuality").child("pH").setValue(0);
                                 }
-                                //FarmPar
                             }
                         }
                     }
@@ -280,6 +293,13 @@ public class Setting extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        menu.findItem(R.id.activity_weather).setVisible(false);
     }
 }
 
