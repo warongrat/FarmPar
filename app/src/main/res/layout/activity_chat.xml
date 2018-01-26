@@ -4,7 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorIndivateTab">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:id="@+id/toolbar1" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <ImageButton
         android:id="@+id/btnSend"
@@ -26,6 +42,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerChat"
+        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/line">
