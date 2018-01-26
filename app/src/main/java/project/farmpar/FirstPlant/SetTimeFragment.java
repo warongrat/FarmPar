@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -30,11 +31,12 @@ import project.farmpar.Notifications.FirstPlant.Notification_AFertilization;
 import project.farmpar.R;
 import project.farmpar.Service.AlarmReceiverPlant;
 
-public class SetTimeFragment extends Fragment {
+public class SetTimeFragment extends Fragment  {
     private TimePicker timePicker;
     private Button start, start2, stop;
+    private EditText et;
     private DatabaseReference myRef;
-    private TextView tv, tv2;
+    private TextView tv;
     AlarmManager alarmManager;
     private PendingIntent pending_intent;
 
@@ -46,15 +48,16 @@ public class SetTimeFragment extends Fragment {
         start = (Button) view.findViewById(R.id.start);
         start2 = (Button) view.findViewById(R.id.alarm2);
         stop = (Button) view.findViewById(R.id.stop);
-        tv = (TextView) view.findViewById(R.id.TextViewSetTime1);
-        tv2 = (TextView) view.findViewById(R.id.TextViewSetTime2);
-        getActivity().setTitle("Set Time Irrigation");
+        et = (EditText) view.findViewById(R.id.et_STFertilization);
+        tv = (TextView) view.findViewById(R.id.TextViewSetTime);
+        getActivity().setTitle(R.string.AutoFertilization);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("SetTime");
+        myRef = database.getReference(idc).child("FirstPlant").child("AutoFertilization");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
         final Intent myIntent = new Intent(getActivity(), AlarmReceiverPlant.class);
+        //final Intent myIntent = new Intent(getActivity(), Notification_AFertilization.class);
         alarmManager = (AlarmManager) getActivity().getSystemService(getActivity().ALARM_SERVICE);
         final Calendar calendar = Calendar.getInstance();
         timePicker.setIs24HourView(true);
@@ -67,14 +70,14 @@ public class SetTimeFragment extends Fragment {
                 value = String.valueOf(map.get("Alert"));
                 value2 = String.valueOf(map.get("Alert2"));
                 value1 = String.valueOf(map.get("Notification"));
-                if (value.equals("Enable"))
-                    tv.setText("Timer 1" + " : " + "Enable");
-                if(value2.equals("Enable"))
-                    tv2.setText("Timer 2" + " : " + "Enable");
-                if (value.equals("Disable"))
-                    tv.setText("Timer 1" + " : " + "Disable");
-                if(value2.equals("Disable"))
-                    tv2.setText("Timer 2" + " : " + "Disable");
+                if ((value.equals("Enable"))&& value2.equals("Enable"))
+                    tv.setText("Timer 1 and Timer 2 : Enable");
+                if ((value.equals("Enable"))&& value2.equals("Disable"))
+                    tv.setText("Timer 1 : Enable");
+                if ((value.equals("Disable"))&& value2.equals("Enable"))
+                    tv.setText("Timer 2 : Enable");
+                if ((value.equals("Disable"))&& value2.equals("Disable"))
+                    tv.setText("Timer : Disable");
                 if (value.equals("Disable") && value1.equals("Enable")) {
                     alarmManager.cancel(pending_intent);
                     getActivity().stopService(new Intent(getActivity(), Notification_AFertilization.class));
@@ -103,11 +106,20 @@ public class SetTimeFragment extends Fragment {
                         calendar.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
                         calendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
                         pending_intent = PendingIntent.getBroadcast(getActivity(), 0, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-                        value.put("Alert", "Enable");
-                        value.put("Secret", "1");
-                        myRef.updateChildren(value);
-                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 24 * 60 * 60, pending_intent);
+
+                        if (et.getText().toString().equals("")) {
+                            et.setError("Please enter volume");
+                            value.put("Alert", "Disable");
+                        } else {
+                            value.put("Alert", "Enable");
+                            value.put("Volume", Integer.parseInt(et.getText().toString()));
+                            value.put("Secret", "1");
+                            myRef.updateChildren(value);
+                            //alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*24*60*60, pending_intent);
+                        }
                     }
+
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -132,13 +144,19 @@ public class SetTimeFragment extends Fragment {
                         calendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
 
                         pending_intent = PendingIntent.getBroadcast(getActivity(), 1, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-                        value.put("Alert2", "Enable");
-                        value.put("Secret", "1");
-                        myRef.updateChildren(value);
-                        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 24 * 60 * 60, pending_intent);
+
+                        if (et.getText().toString().equals("")) {
+                            et.setError("Please enter volume");
+                            value.put("Alert2", "Disable");
+                        } else {
+                            value.put("Alert2", "Enable");
+                            value.put("Volume", Integer.parseInt(et.getText().toString()));
+                            value.put("Secret", "1");
+                            myRef.updateChildren(value);
+                            //alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*24*60*60, pending_intent);
+                        }
                     }
-
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
@@ -160,7 +178,6 @@ public class SetTimeFragment extends Fragment {
                         value.put("Alert2", "Disable");
                         myRef.updateChildren(value);
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 

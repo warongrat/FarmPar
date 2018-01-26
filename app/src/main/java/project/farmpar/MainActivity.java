@@ -34,6 +34,7 @@ import project.farmpar.FiSho.PondSettingFragment;
 import project.farmpar.FiSho.QualitySet;
 import project.farmpar.FiSho.TankFragment;
 import project.farmpar.FiSho.WaterQualityFragment;
+import project.farmpar.FirstPlant.FertilizationFragment;
 import project.farmpar.FirstPlant.IrrigationFragment;
 import project.farmpar.FirstPlant.SetTimeFragment;
 import project.farmpar.FirstPlant.WautoFragment;
@@ -181,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment = new WautoFragment();
         } else if (id == R.id.nav_time) {
             fragment = new SetTimeFragment();
+        }else if (id == R.id.nav_fertilizer) {
+            fragment = new FertilizationFragment();
         } else if (id == R.id.setting) {
             fragment = new Setting();
         } else if (id == R.id.nav_quality) {

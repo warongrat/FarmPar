@@ -1,19 +1,13 @@
 package project.farmpar;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -40,10 +34,8 @@ import project.farmpar.data.FriendDB;
 import project.farmpar.data.GroupDB;
 
 public class Setting extends Fragment {
-    NavigationView navigationView;
-    private DatabaseReference myRef, userDB, Ref;
+    private DatabaseReference myRef, Ref;
     private Button select, signout;
-    private EditText controller;
     private TextView Tset;
     public static String idc;
     List<String> stringlist;
@@ -234,14 +226,18 @@ public class Setting extends Fragment {
                                 if (t_spinner.getSelectedItem().toString().equals("FirstPlant")) {
                                     myRef.child("FirstPlant").child(farmname.getText().toString()).setValue(controller.getText().toString());
                                     Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FirstPlant");
-                                    Ref.child("SetTime").child("Alert").setValue("Disable");
-                                    Ref.child("SetTime").child("Alert2").setValue("Disable");
-                                    Ref.child("SetTime").child("Notification").setValue("Disable");
-                                    Ref.child("SetTime").child("Secret").setValue("0");
-                                    Ref.child("SetTime").child("Status").setValue("Disable");
+                                    Ref.child("AutoFertilization").child("Alert").setValue("Disable");
+                                    Ref.child("AutoFertilization").child("Alert2").setValue("Disable");
+                                    Ref.child("AutoFertilization").child("Notification").setValue("Disable");
+                                    Ref.child("AutoFertilization").child("Secret").setValue("0");
+                                    Ref.child("AutoFertilization").child("Status").setValue("Disable");
+                                    Ref.child("AutoFertilization").child("Volume").setValue(0);
                                     Ref.child("AutoIrrigation").child("Notification").setValue("Disable");
                                     Ref.child("AutoIrrigation").child("Status").setValue("Disable");
                                     Ref.child("AutoIrrigation").child("Warning").setValue(0);
+                                    Ref.child("Fertilization").child("Status").setValue("Disable");
+                                    Ref.child("Fertilization").child("Notification").setValue("Disable");
+                                    Ref.child("Fertilization").child("Volume").setValue(0);
                                     Ref.child("Irrigation").child("Time").setValue(0);
                                     Ref.child("Irrigation").child("Status").setValue("Disable");
                                     Ref.child("Irrigation").child("Notification").setValue("Disable");

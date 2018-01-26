@@ -15,13 +15,18 @@
                     android:icon="@drawable/water"
                     android:title="@string/Irrigation" />
                 <item
+                android:id="@+id/nav_Wauto"
+                android:icon="@drawable/irrigation2"
+                android:title="@string/AutoIrrigation" />
+                <item
+                    android:id="@+id/nav_fertilizer"
+                    android:icon="@drawable/ferlilizer"
+                    android:title="@string/Fertilization" />
+                <item
                     android:id="@+id/nav_time"
                     android:icon="@drawable/timer"
-                    android:title="@string/SetTime" />
-                <item
-                    android:id="@+id/nav_Wauto"
-                    android:icon="@drawable/irrigation2"
-                    android:title="@string/AutoIrrigation" />
+                    android:title="Auto Fertilization" />
+
             </group>
         </menu>
     </item>

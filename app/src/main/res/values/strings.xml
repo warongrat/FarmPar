@@ -62,5 +62,7 @@
     <string name="enter_group_name">Enter group name</string>
     <string name="Select">Select</string>
     <string name="SignOut">Sign out</string>
+    <string name="Fertilization">Fertilization Control</string>
+    <string name="AutoFertilization">AutoFertilization</string>
 
 </resources>
