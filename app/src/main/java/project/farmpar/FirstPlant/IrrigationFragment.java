@@ -47,7 +47,7 @@ public class IrrigationFragment extends Fragment {
         getActivity().setTitle(R.string.Irrigation);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("Irrigation");
+        myRef = database.getReference(idc).child("Plant").child("Irrigation");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

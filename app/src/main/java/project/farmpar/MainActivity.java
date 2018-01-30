@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        if(prefs.getString("Type", "").toString().equals("FirstPlant"))
+        if(prefs.getString("Type", "").toString().equals("Plant"))
             nav_Menu.setGroupVisible(R.id.group_fish, false);
-        else if(prefs.getString("Type", "").toString().equals("FiSho"))
+        else if(prefs.getString("Type", "").toString().equals("Fish"))
             nav_Menu.setGroupVisible(R.id.group_plant, false);
         else{
             nav_Menu.setGroupVisible(R.id.group_fish, false);

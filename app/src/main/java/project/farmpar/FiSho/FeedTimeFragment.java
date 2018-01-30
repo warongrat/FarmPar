@@ -64,7 +64,7 @@ public class FeedTimeFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String idc = prefs.getString("IDC", "");
 
-        time = database.getReference(idc).child("FiSho").child("FeedSet");
+        time = database.getReference(idc).child("Fish").child("FeedSet");
         time.keepSynced(true);
         time.orderByValue().limitToLast(1);
         final Intent myIntent = new Intent(getActivity(), AlarmReceiverFish.class);

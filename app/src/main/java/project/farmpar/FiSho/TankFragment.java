@@ -50,7 +50,7 @@ public class TankFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String idc = prefs.getString("IDC", "");
         // TempWater
-        gpond = database.getReference(idc).child("FiSho").child("Tank");
+        gpond = database.getReference(idc).child("Fish").child("Tank");
         gpond.keepSynced(true);
         gpond.orderByValue().limitToLast(1);
         gpond.addValueEventListener(new ValueEventListener() {

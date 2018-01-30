@@ -47,7 +47,7 @@ public class QualitySet extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String idc = prefs.getString("IDC", "");
 
-        Qset = database.getReference(idc).child("FiSho").child("Setting");
+        Qset = database.getReference(idc).child("Fish").child("Setting");
         Qset.keepSynced(true);
         Qset.orderByValue().limitToLast(1);
         tmax = (EditText) view.findViewById(R.id.TempMax);

@@ -53,7 +53,7 @@ public class SetTimeFragment extends Fragment  {
         getActivity().setTitle(R.string.AutoFertilization);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("AutoFertilization");
+        myRef = database.getReference(idc).child("Plant").child("AutoFertilization");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
         final Intent myIntent = new Intent(getActivity(), AlarmReceiverPlant.class);

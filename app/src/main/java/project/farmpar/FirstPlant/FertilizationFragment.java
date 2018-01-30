@@ -47,7 +47,7 @@ public class FertilizationFragment extends Fragment {
         getActivity().setTitle(R.string.Fertilization);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("Fertilization");
+        myRef = database.getReference(idc).child("Plant").child("Fertilization");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
         myRef.addValueEventListener(new ValueEventListener() {

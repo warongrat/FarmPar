@@ -51,7 +51,7 @@ public class WaterQualityFragment extends Fragment {
         String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         // TempWater
-        gvalue = database.getReference(idc).child("FiSho").child("WaterQuality");
+        gvalue = database.getReference(idc).child("Fish").child("WaterQuality");
         gvalue.keepSynced(true);
         gvalue.orderByValue().limitToLast(1);
         gvalue.addValueEventListener(new ValueEventListener() {

@@ -51,7 +51,7 @@ public class PondSettingFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String idc = prefs.getString("IDC", "");
 
-        foodset = database.getReference(idc).child("FiSho").child("FoodLevel");
+        foodset = database.getReference(idc).child("Fish").child("FoodLevel");
         foodset.keepSynced(true);
         foodset.orderByValue().limitToLast(1);
 

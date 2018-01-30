@@ -40,7 +40,7 @@ public class Setting extends Fragment {
     public static String idc;
     List<String> stringlist;
     ArrayAdapter<String> adapter, adapter_type;
-    private String[] type = {"Choose a Type...", "FirstPlant", "FiSho"};
+    private String[] type = {"Choose a Type...", "Plant", "Fish"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,8 +77,8 @@ public class Setting extends Fragment {
                 spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (parent.getItemAtPosition(position).toString().equals("FirstPlant")) {
-                            myRef.child("FirstPlant").addValueEventListener(new ValueEventListener() {
+                        if (parent.getItemAtPosition(position).toString().equals("Plant")) {
+                            myRef.child("Plant").addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     stringlist.clear();
@@ -88,7 +88,7 @@ public class Setting extends Fragment {
                                         stringlist.add(key);
                                         adapter.notifyDataSetChanged();
                                         SharedPreferences.Editor editor = prefs.edit();
-                                        editor.putString("Type", "FirstPlant");
+                                        editor.putString("Type", "Plant");
                                         editor.commit();
                                     }
                                 }
@@ -97,8 +97,8 @@ public class Setting extends Fragment {
                                 public void onCancelled(DatabaseError databaseError) {
                                 }
                             });
-                        } else if (parent.getItemAtPosition(position).toString().equals("FiSho")) {
-                            myRef.child("FiSho").addValueEventListener(new ValueEventListener() {
+                        } else if (parent.getItemAtPosition(position).toString().equals("Fish")) {
+                            myRef.child("Fish").addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     stringlist.clear();
@@ -108,7 +108,7 @@ public class Setting extends Fragment {
                                         stringlist.add(key);
                                         adapter.notifyDataSetChanged();
                                         SharedPreferences.Editor editor = prefs.edit();
-                                        editor.putString("Type", "FiSho");
+                                        editor.putString("Type", "Fish");
                                         editor.commit();
                                     }
                                 }
@@ -223,9 +223,9 @@ public class Setting extends Fragment {
                             if (farmname.getText().toString().equals("") || (controller.getText().toString().equals(""))) {
                             } else {
 
-                                if (t_spinner.getSelectedItem().toString().equals("FirstPlant")) {
-                                    myRef.child("FirstPlant").child(farmname.getText().toString()).setValue(controller.getText().toString());
-                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FirstPlant");
+                                if (t_spinner.getSelectedItem().toString().equals("Plant")) {
+                                    myRef.child("Plant").child(farmname.getText().toString()).setValue(controller.getText().toString());
+                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("Plant");
                                     Ref.child("AutoFertilization").child("Alert").setValue("Disable");
                                     Ref.child("AutoFertilization").child("Alert2").setValue("Disable");
                                     Ref.child("AutoFertilization").child("Notification").setValue("Disable");
@@ -249,9 +249,9 @@ public class Setting extends Fragment {
                                 }
 
                                 //FiSho
-                                else if (t_spinner.getSelectedItem().toString().equals("FiSho")) {
-                                    myRef.child("FiSho").child(farmname.getText().toString()).setValue(controller.getText().toString());
-                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("FiSho");
+                                else if (t_spinner.getSelectedItem().toString().equals("Fish")) {
+                                    myRef.child("Fish").child(farmname.getText().toString()).setValue(controller.getText().toString());
+                                    Ref = FirebaseDatabase.getInstance().getReference(controller.getText().toString()).child("Fish");
                                     Ref.child("FeedSet").child("Alert1").setValue("Disable");
                                     Ref.child("FeedSet").child("Alert2").setValue("Disable");
                                     Ref.child("FeedSet").child("Alert3").setValue("Disable");
