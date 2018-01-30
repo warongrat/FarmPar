@@ -16,7 +16,7 @@
     <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="License Agreement"
         app:showAsAction="never" />
 
 </menu>
