@@ -79,7 +79,7 @@ public class PondSettingFragment extends Fragment {
             }
         });
 
-        oxygenset = database.getReference(idc).child("FiSho").child("TankSet");
+        oxygenset = database.getReference(idc).child("Fish").child("TankSet");
         oxygenset.keepSynced(true);
         oxygenset.orderByValue().limitToLast(1);
         BO.setOnClickListener(new View.OnClickListener() {

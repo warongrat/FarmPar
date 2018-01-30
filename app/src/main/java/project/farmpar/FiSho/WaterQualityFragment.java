@@ -85,7 +85,7 @@ public class WaterQualityFragment extends Fragment {
         });
 
         //
-        gnoti = database.getReference(idc).child("FiSho").child("Setting");
+        gnoti = database.getReference(idc).child("Fish").child("Setting");
         gnoti.keepSynced(true);
         gnoti.orderByValue().limitToLast(1);
         gnoti.addValueEventListener(new ValueEventListener() {

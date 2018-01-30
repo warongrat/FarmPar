@@ -77,7 +77,7 @@ public class TankFragment extends Fragment {
             }
         });
 
-        gnoti = database.getReference(idc).child("FiSho").child("Tank");
+        gnoti = database.getReference(idc).child("Fish").child("Tank");
         gnoti.keepSynced(true);
         gnoti.orderByValue().limitToLast(1);
         gnoti.addValueEventListener(new ValueEventListener() {
