@@ -57,7 +57,7 @@
         <item name="colorPrimary">#03A9F4</item>
         <item name="colorPrimaryDark">#FFCC00</item>
         <item name="colorAccent">#4fa881</item>
-        <item name="android:windowBackground">@drawable/bg</item>
+        <item name="android:windowBackground">@drawable/bgc</item>
     </style>
 
     <style name="AppTheme1" parent="AppTheme" />

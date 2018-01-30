@@ -23,11 +23,11 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="300dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="150dp"
+            android:paddingTop="50dp"
             app:srcCompat="@drawable/load" />
 
         <com.felipecsl.gifimageview.library.GifImageView

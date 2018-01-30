@@ -35,7 +35,6 @@ import project.farmpar.data.SharedPreferenceHelper;
 import project.farmpar.data.StaticConfig;
 import project.farmpar.model.User;
 
-
 public class LoginActivity extends AppCompatActivity {
     private static String TAG = "LoginActivity";
     FloatingActionButton fab;

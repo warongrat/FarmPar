@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.setSmallIcon(R.drawable.icon_small)
                 .setAutoCancel(true)
                 .setContentTitle("Welcome")
-                .setContentText("Farming For Myself")
+                .setContentText("Farming for Everyone")
                 .setContentIntent(pendingIntent)
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
                 .setPriority(Notification.PRIORITY_MAX);
@@ -162,6 +162,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.action_chat) {
             startActivity(new Intent(MainActivity.this, MainChat.class));
+            return true;
+        }if (id == R.id.action_about) {
+            fragment = new About();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
             return true;
         }
 
