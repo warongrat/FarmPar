@@ -47,7 +47,7 @@ private String secret;
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("AutoFertilization");
+        myRef = database.getReference(idc).child("Plant").child("AutoFertilization");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

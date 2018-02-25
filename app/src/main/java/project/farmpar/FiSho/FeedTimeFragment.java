@@ -112,7 +112,7 @@ public class FeedTimeFragment extends Fragment {
                         Log.e("MyActivity", "In the receiver with " + hour + " and " + minute);
                         calendar.set(Calendar.HOUR_OF_DAY, timefood.getCurrentHour());
                         calendar.set(Calendar.MINUTE, timefood.getCurrentMinute());
-                        pending_intent = PendingIntent.getBroadcast(getActivity(), 0, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(getActivity(), 2, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                         if (fm.getText().toString().equals("")) {
                             fm.setError("Please enter minute");
@@ -150,7 +150,7 @@ public class FeedTimeFragment extends Fragment {
                         calendar.set(Calendar.HOUR_OF_DAY, timefood.getCurrentHour());
                         calendar.set(Calendar.MINUTE, timefood.getCurrentMinute());
 
-                        pending_intent = PendingIntent.getBroadcast(getActivity(), 1, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(getActivity(), 3, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                         if (fm.getText().toString().equals("")) {
                             fm.setError("Please enter minute");
@@ -187,7 +187,7 @@ public class FeedTimeFragment extends Fragment {
                         calendar.set(Calendar.HOUR_OF_DAY, timefood.getCurrentHour());
                         calendar.set(Calendar.MINUTE, timefood.getCurrentMinute());
 
-                        pending_intent = PendingIntent.getBroadcast(getActivity(), 2, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        pending_intent = PendingIntent.getBroadcast(getActivity(), 4, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                         if (fm.getText().toString().equals("")) {
                             fm.setError("Please enter minute");

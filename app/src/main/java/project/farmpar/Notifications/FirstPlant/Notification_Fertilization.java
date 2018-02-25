@@ -43,7 +43,7 @@ public class Notification_Fertilization extends Service {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("Fertilization");
+        myRef = database.getReference(idc).child("Plant").child("Fertilization");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 

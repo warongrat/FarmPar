@@ -41,7 +41,7 @@ public class Notification_Irrigation extends Service {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idc = prefs.getString("IDC", "");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(idc).child("FirstPlant").child("Irrigation");
+        myRef = database.getReference(idc).child("Plant").child("Irrigation");
         myRef.keepSynced(true);
         myRef.orderByValue().limitToLast(1);
 
