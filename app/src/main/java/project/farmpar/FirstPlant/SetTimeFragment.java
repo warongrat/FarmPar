@@ -176,6 +176,7 @@ public class SetTimeFragment extends Fragment  {
                         value.put("Secret", "0");
                         value.put("Alert", "Disable");
                         value.put("Alert2", "Disable");
+                        tv.setText("Timer : Disable");
                         myRef.updateChildren(value);
                     }
                     @Override

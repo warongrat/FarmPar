@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference userDB, Ref;
     private String username;
     private TextView Tset;
+    private FragmentManager fragmentManager;
+    private Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,16 +115,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         View bView = navigationView.getHeaderView(0);
         ImageView banner = (ImageView) bView.findViewById(R.id.banner);
-        if (prefs.getString("Type", "").toString().equals("Plant")) {
+        if ((prefs.getString("Type", "").toString().equals("Plant")) && (prefs.getString("First", "").equals("1"))) {
             banner.setImageResource(R.drawable.bgp);
             nav_Menu.setGroupVisible(R.id.group_fish, false);
-        } else if (prefs.getString("Type", "").toString().equals("Fish")) {
+        } else if ((prefs.getString("Type", "").toString().equals("Fish")) && (prefs.getString("First", "").equals("1"))) {
             banner.setImageResource(R.drawable.bgf);
             nav_Menu.setGroupVisible(R.id.group_plant, false);
-        } else {
-            banner.setImageResource(R.drawable.bgn);
-            nav_Menu.setGroupVisible(R.id.group_fish, false);
-            nav_Menu.setGroupVisible(R.id.group_plant, false);
+        } else if (prefs.getString("First", "").equals("")) {
+            fragment = new get_start();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
         }
     }
 
@@ -179,7 +182,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         if (id == R.id.action_chat) {
-            startActivity(new Intent(MainActivity.this, MainChat.class));
+            fragment = new MainChat();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
             return true;
         }
         if (id == R.id.action_about) {

@@ -32,5 +32,5 @@
     <color name="grey_800">#212121</color>
     <color name="blue">#00d180</color>
     <color name="bblue">#33c4bb</color>
-
+    <color name="grey_50">#fafafa</color>
 </resources>
