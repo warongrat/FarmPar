@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_50"
     android:fitsSystemWindows="true"
     tools:context="project.farmpar.MainChat">
 
@@ -15,6 +14,14 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:id="@+id/toolbar" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -34,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_float_button"
         app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/ic_float_button" />
+        />
 
 </android.support.design.widget.CoordinatorLayout>

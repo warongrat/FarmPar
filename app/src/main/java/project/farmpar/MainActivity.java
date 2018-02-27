@@ -182,10 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         if (id == R.id.action_chat) {
-            fragment = new MainChat();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
+            startActivity(new Intent(MainActivity.this, MainChat.class));
             return true;
         }
         if (id == R.id.action_about) {
