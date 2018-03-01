@@ -35,7 +35,7 @@ public class get_start extends Fragment {
     public TourGuide mTutorialHandler, mTutorialHandler2;
     private Button get_start;
     private DatabaseReference myRef, userDB, Ref;
-    private TextView Tset;
+    private TextView Tset, Tfarm;
     private String username;
     List<String> stringlist;
     ArrayAdapter<String> adapter, adapter_type;
@@ -82,6 +82,7 @@ public class get_start extends Fragment {
                 View dView = getActivity().getLayoutInflater().inflate(R.layout.activity_dialog, null);
                 View sView = getActivity().getLayoutInflater().inflate(R.layout.activity_setting, null);
                 Tset = (TextView) sView.findViewById(R.id.Tset);
+                Tfarm = (TextView) sView.findViewById(R.id.Tfarm);
                 final EditText farmname = (EditText) dView.findViewById(R.id.farmname);
                 final EditText controller = (EditText) dView.findViewById(R.id.controller);
                 final Spinner t_spinner = (Spinner) dView.findViewById(R.id.t_spinner);
@@ -126,6 +127,7 @@ public class get_start extends Fragment {
                                     Ref.child("Weather").child("Raindrop").setValue(0);
                                     Ref.child("Weather").child("Sunlight").setValue(0);
                                     editor.putString("Type", "Plant");
+                                    editor.putString("Farm", farmname.getText().toString());
                                 }
 
                                 //FiSho
@@ -157,6 +159,7 @@ public class get_start extends Fragment {
                                     Ref.child("WaterQuality").child("Turbidity").setValue(0);
                                     Ref.child("WaterQuality").child("pH").setValue(0);
                                     editor.putString("Type", "Fish");
+                                    editor.putString("Farm", farmname.getText().toString());
                                 }
                             }
                         }
@@ -165,6 +168,7 @@ public class get_start extends Fragment {
                         editor.putString("IDC", value);
                         editor.commit();
                         Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
+                        Tfarm.setText("Farm name: "+ prefs.getString("Farm", ""));
                         dialog.dismiss();
                         getActivity().finish();
                         startActivity(getActivity().getIntent());
