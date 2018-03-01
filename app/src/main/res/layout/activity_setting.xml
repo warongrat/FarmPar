@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_50"
     android:orientation="vertical"
+    android:background="@color/grey_50"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -15,12 +15,24 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/Tfarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Tset"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="39dp"
+            android:text="farm name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp" />
+
+        <TextView
             android:id="@+id/Tset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/select"
+            android:layout_above="@+id/edit_id"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="54dp"
+            android:layout_marginBottom="59dp"
             android:text="Controller ID"
             android:textAllCaps="true"
             android:textColor="@color/colorBlack"
@@ -30,22 +42,22 @@
             android:id="@+id/select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/signout"
+            android:layout_above="@+id/fab"
             android:layout_alignParentStart="true"
-            android:background="@color/colorAccentPressed"
-            android:text="@string/Select"
+            android:layout_marginBottom="88dp"
+            android:background="@color/green"
+            android:text="select"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/signout"
+            android:id="@+id/edit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/select"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="182dp"
-            android:background="@color/colorRed"
-            android:text="@string/SignOut"
+            android:background="@color/colorAccentPressed"
+            android:text="edit"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -58,7 +70,6 @@
             android:layout_gravity="bottom|end"
             android:src="@drawable/add"
             app:backgroundTint="@color/colorPrimary" />
-
 
     </RelativeLayout>
 

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NotificationManager notificationManager;
     private DatabaseReference userDB, Ref;
     private String username;
-    private TextView Tset;
+    private TextView Tset, Tfarm;
     private FragmentManager fragmentManager;
     private Fragment fragment = null;
 
@@ -231,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             final Spinner spinner = (Spinner) mView.findViewById(R.id.spinner);
             final Spinner spinner_type = (Spinner) mView.findViewById(R.id.spinner_type);
             Tset = (TextView) view.findViewById(R.id.Tset);
+            Tfarm = (TextView) view.findViewById(R.id.Tfarm);
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
             mBuilder.setTitle("Farm name");
 
@@ -257,9 +258,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     String key = snapshot.getKey().toString();
                                     stringlist.add(key);
                                     adapter.notifyDataSetChanged();
-                                    SharedPreferences.Editor editor = prefs.edit();
-                                    editor.putString("Type", "Plant");
-                                    editor.commit();
                                 }
                             }
 
@@ -277,9 +275,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     String key = snapshot.getKey().toString();
                                     stringlist.add(key);
                                     adapter.notifyDataSetChanged();
-                                    SharedPreferences.Editor editor = prefs.edit();
-                                    editor.putString("Type", "Fish");
-                                    editor.commit();
                                 }
                             }
 
@@ -301,17 +296,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(final DialogInterface dialog, int which) {
 
                     if (!spinner.getSelectedItem().toString().equals("Choose a Farm...")) {
-                        Ref.child(prefs.getString("Type", "")).addValueEventListener(new ValueEventListener() {
+                        Ref.child(spinner_type.getSelectedItem().toString()).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 String value = dataSnapshot.child(spinner.getSelectedItem().toString()).getValue(String.class);
                                 SharedPreferences.Editor editor = prefs.edit();
                                 editor.putString("IDC", value);
-                                editor.commit();
-                                Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
+                                editor.putString("Farm", spinner.getSelectedItem().toString());
                                 dialog.dismiss();
-                                finish();
-                                startActivity(getIntent());
+                                if(!spinner_type.getSelectedItem().toString().equals(prefs.getString("Type", ""))) {
+                                    editor.putString("Type", spinner_type.getSelectedItem().toString());
+                                    editor.putString("Farm", spinner.getSelectedItem().toString());
+                                    editor.commit();
+                                    Tfarm.setText("Farm name: "+ spinner.getSelectedItem().toString());
+                                    Tset.setText(getResources().getString(R.string.Current_ID) + " : " + value);
+                                    finish();
+                                    startActivity(getIntent());
+                                }
+                                editor.commit();
+                                Tfarm.setText("Farm name: "+ spinner.getSelectedItem().toString());
+                                Tset.setText(getResources().getString(R.string.Current_ID) + " : " + value);
                             }
 
                             @Override

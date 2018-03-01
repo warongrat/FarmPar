@@ -66,11 +66,12 @@
     </group>
     <item android:title="@string/Settings">
         <menu>
-
+            <group android:checkableBehavior="single">
             <item
                 android:id="@+id/setting"
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/Settings" />
+            </group>
         </menu>
     </item>
 </menu>
